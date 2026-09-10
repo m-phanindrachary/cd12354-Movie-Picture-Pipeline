@@ -1,4 +1,4 @@
-name: Frontend CI
+name: Frontend Continuous Integration
 
 on:
   pull_request:
@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'starter/frontend/**'
+      - '.github/workflows/frontend-ci.yaml'
   workflow_dispatch:
 
 jobs:
@@ -57,7 +58,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: CI=true npm test -- --watchAll=false
+        run: CI=true npm run test -- --watchAll=false
 
   build:
     name: Frontend Build
@@ -85,7 +86,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: CI=true npm test -- --watchAll=false
+        run: CI=true npm run test -- --watchAll=false
 
       - name: Build Docker image
         run: |
